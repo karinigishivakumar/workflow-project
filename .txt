@@ -1,0 +1,4 @@
+create table tablename(
+	id serial primary key,
+	details jsonb
+)

@@ -1,0 +1,337 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: workflow-lambda-serverless
+frameworkVersion: '3'
+
+useDotenv: true
+
+plugins: 
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  timeout: 15
+  runtime: nodejs18.x
+  region: us-east-1
+
+
+functions:
+
+  # Project configuration
+  # Add project
+  AddProject:
+    handler: Project/add_project.add_project 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /project
+        method: post
+        cors: true
+     
+  # Delete project
+  DeleteProject:
+    handler: Project/delete_project.delete_project 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /project/{id}
+        method: delete
+        cors: true
+        
+  # Search project
+  SearchProject:
+    handler: Project/search_project.search_project 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /project
+        method: get
+        cors: true
+
+  # Update project
+  UpdateProject:
+    handler: Project/update_project.update_project 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /project/{id}
+        method: put
+        cors: true
+        
+  # # Deactivate project
+  # DeactivateProject:
+  #   handler: Project/deactivate_project.deactivate_project 
+  #   role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /project/deactivate/{id}
+  #       method: post
+  #       cors: true
+
+  # Projectteam configuration
+  # Add projectteam
+  AddProjectteam:
+    handler: Projectteam/add_projectteam.add_projectteam 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /projectteam
+        method: post
+        cors: true
+     
+  # Delete projectteam
+  DeleteProjectteam:
+    handler: Projectteam/delete_projectteam.delete_projectteam 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /projectteam/{id}
+        method: delete
+        cors: true
+        
+  # Search projectteam
+  SearchProjectteam:
+    handler: Projectteam/search_projectteam.search_projectteam 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /projectteam
+        method: get
+        cors: true
+
+  # Update projectteam
+  UpdateProjectteam:
+    handler: Projectteam/update_projectteam.update_projectteam 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /projectteam/{id}
+        method: put
+        cors: true
+        
+  # Deactivate projectteam
+  # DeactivateProjectteam:
+  #   handler: Projectteam/deactivate_projectteam.deactivate_projectteam 
+  #   role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /projectteam/deactivate/{id}
+  #       method: post
+  #       cors: true
+
+  # Resource configuration
+  # Add resource
+  AddResource:
+    handler: Resource/add_resource.add_resource 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /resource
+        method: post
+        cors: true
+     
+  # Delete resource
+  DeleteResource:
+    handler: Resource/delete_resource.delete_resource 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /resource/{id}
+        method: delete
+        cors: true
+        
+  # Search resource
+  SearchResource:
+    handler: Resource/search_resource.search_resource 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /resource
+        method: get
+        cors: true
+
+  # Update resource
+  UpdateResource:
+    handler: Resource/update_resource.update_resource 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /resource/{id}
+        method: put
+        cors: true
+        
+  # # Deactivate resource
+  # DeactivateResource:
+  #   handler: Resource/deactivate_resource.deactivate_resource 
+  #   role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /resource/deactivate/{id}
+  #       method: post
+  #       cors: true
+
+  # Stage configuration
+  # Add stage
+  AddStage:
+    handler: Stage/add_resource.add_resource 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /stage
+        method: post
+        cors: true
+     
+  # Delete stage
+  DeleteStage:
+    handler: Stage/delete_stage.delete_stage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /stage/{id}
+        method: delete
+        cors: true
+        
+  # Search stage
+  SearchStage:
+    handler: Stage/search_stage.search_stage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /stage
+        method: get
+        cors: true
+
+  # Update stage
+  UpdateStage:
+    handler: Stage/update_stage.update_stage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /stage/{id}
+        method: put
+        cors: true
+        
+  # # Deactivate stage
+  # DeactivateStage:
+  #   handler: Stage/deactivate_stage.deactivate_stage 
+  #   role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /stage/deactivate/{id}
+  #       method: post
+  #       cors: true
+
+  # Substage configuration
+  # Add substage
+  AddSubstage:
+    handler: Substage/add_substage.add_substage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /substage
+        method: post
+        cors: true
+     
+  # Delete substage
+  DeleteSubstage:
+    handler: Substage/delete_substage.delete_substage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /substage/{id}
+        method: delete
+        cors: true
+        
+  # Search substage
+  SearchSubstage:
+    handler: Substage/search_substage.search_substage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /substage
+        method: get
+        cors: true
+
+  # Update substage
+  UpdateSubstage:
+    handler: Substage/update_substage.update_substage 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /substage/{id}
+        method: put
+        cors: true
+        
+  # # Deactivate substage
+  # DeactivateSubstage:
+  #   handler: Substage/deactivate_substage.deactivate_substage 
+  #   role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /substage/deactivate/{id}
+  #       method: post
+  #       cors: true
+
+  # Usecase configuration
+  # Add usecase
+  AddUsecase:
+    handler: Usecase/add_usecase.add_usecase 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /usecase
+        method: post
+        cors: true
+     
+  # Delete usecase
+  DeleteUsecase:
+    handler: Usecase/delete_usecase.delete_usecase 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /usecase/{id}
+        method: delete
+        cors: true
+        
+  # Search usecase
+  SearchUsecase:
+    handler: Usecase/search_usecase.search_usecase 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /usecase
+        method: get
+        cors: true
+
+  # Update usecase
+  UpdateUsecase:
+    handler: Usecase/update_usecase.update_usecase 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /usecase/{id}
+        method: put
+        cors: true
+        
+  # # Deactivate usecase
+  # DeactivateUsecase:
+  #   handler: Usecase/deactivate_usecase.deactivate_usecase 
+  #   # role: ${env:LAMBDA_ROLE}
+  #   events:
+  #   - http:
+  #       path: /usecase/deactivate/{id}
+  #       method: post
+  #       cors: true
+
